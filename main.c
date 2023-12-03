@@ -3,7 +3,7 @@
 #include "conio.h"
 
 int main(int argc,char argv[]){
-    system("chcp 65001");
+    system("chcp 65001");//設定終端機編碼以利各使用者執行
     system("cls");
     printf("歡迎使用簡易記帳簿\n");
     while(1){
