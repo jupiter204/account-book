@@ -1,19 +1,24 @@
 #include "showInfo.h"
 #include "stdio.h"
 #include "windows.h"
-void showIndex(char *lock,char **text){
-    system("cls");
-    printf("歡迎使用本系統\n");
-    printf("請使用方向鍵選擇功能，按下迴車建確認選擇\n");
-    for(int i=0;i<sizeof(lock)/2;i++){
-        printf("(%c) %s\n",lock[i],text[i]);
-    }
-}
 void showDate(char *date){
     system("cls");
-    printf("輸入日期按下迴車鍵確認(不輸入則為今日):\n");
+    printf("輸入日期，按下迴車鍵確認(不輸入則為今日):\n");
     for(int i=0;i<10;i++){
         printf("%c",date[i]);
     }
     putchar('\n');
+}
+void showReason(void){
+    system("cls");
+    printf("輸入事由，按下迴車鍵確認:\n");
+}
+void showPrice(void){
+    system("cls");
+    printf("輸入金額，按下迴車鍵確認:\n");
+}
+void showAll(char *date,char *reason,int *price){
+    system("cls");
+    printf("日期:%s 事由:%s 金額:%d\n",date,reason,*price);
+    printf("是否將此紀錄新增至暫存區?(Y/n)");
 }

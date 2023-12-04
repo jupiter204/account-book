@@ -2,9 +2,16 @@
 #include "string.h"
 #include "conio.h"
 #include "windows.h"
-#include "showInfo.h"
 #include "module.h"
 
+void showIndex(char *lock,char **text){
+    system("cls");
+    printf("歡迎使用本系統\n");
+    printf("請使用方向鍵選擇功能，按下迴車建確認選擇\n");
+    for(int i=0;i<sizeof(lock)/2;i++){
+        printf("(%c) %s\n",lock[i],text[i]);
+    }
+}
 int main(int argc,char argv[]){
     system("chcp 65001");//設定終端機編碼以利各使用者執行
     char lock[4]={'*',' ',' ',' '};
