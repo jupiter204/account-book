@@ -1,7 +1,6 @@
 #include "stdio.h"
 #include "string.h"
 #include "conio.h"
-#include "windows.h"
 #include "time.h"
 #include "showInfo.h"
 #include "module.h"
@@ -13,14 +12,14 @@ void addRecord(void){
     showDate(date);
     while(1){
         key=getch();
-        if(key>=48&&key<=57){
+        if(key>=48&&key<=57){   //擷取按鍵，判斷是否輸入數字
             if(i==4||i==7)i++;
             date[i++]=key;
             showDate(date);
         }
         if(i>9){break;}
         if(key==13){
-            if(date[0]==' '){
+            if(date[0]==' '){   //如果使用者沒有輸入日期，則自動填入當日日期
                 time_t rawtime;
                 struct tm *info;
                 rawtime=time(NULL);
@@ -39,7 +38,7 @@ void addRecord(void){
     scanf("%d",&price);
     showAll(date,reason,&price);
     key=0;
-    while(key==0){
+    while(key==0){  //使用者確認資料，選擇重寫或確認
         key=getch();
         if(key=='n'){addRecord();}
         else{}
