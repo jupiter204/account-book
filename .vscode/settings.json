@@ -2,6 +2,10 @@
     "cmake.configureOnOpen": false,
     "git.ignoreLimitWarning": true,
     "files.associations": {
-        "windows.h": "c"
+        "windows.h": "c",
+        "string.h": "c",
+        "conio.h": "c",
+        "showinfo.h": "c",
+        "dos.h": "c"
     }
 }
