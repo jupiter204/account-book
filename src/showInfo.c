@@ -20,5 +20,5 @@ void showPrice(void){
 void showAll(char *date,char *reason,int *price){
     system("cls");
     printf("日期:%s 事由:%s 金額:%d\n",date,reason,*price);
-    printf("是否將此紀錄新增至暫存區?(Y/n)");
+    printf("是否將此紀錄新增至檔案?(Y/n)");
 }

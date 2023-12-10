@@ -15,7 +15,7 @@ void showIndex(char *lock,char **text){
 int main(int argc,char argv[]){
     system("chcp 65001");   //設定終端機編碼以利各使用者執行
     char lock[4]={'*',' ',' ',' '};
-    char *text[4]={"新增紀錄","查看紀錄","刪除紀錄","儲存離開"};
+    char *text[4]={"新增紀錄","查看紀錄","刪除紀錄","結束程式"};
     showIndex(lock,text);
     int ch=0;
     while(1){
@@ -41,8 +41,7 @@ int main(int argc,char argv[]){
                 system("cls");printf("你選擇了功能3，將於1秒鐘後返回");Sleep(1000);
                 break;
             case 3:
-                system("cls");printf("你選擇了功能4，將於1秒鐘後返回");Sleep(1000);
-                break;
+                return 0;
             }
             showIndex(lock,text);
         }

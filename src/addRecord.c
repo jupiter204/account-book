@@ -4,10 +4,11 @@
 #include "time.h"
 #include "showInfo.h"
 #include "module.h"
+#include "fileControl.h"
 
 void addRecord(void){
-    char date[10]={"    /  /  "};
-    char reason[100]="\0";
+    char date[11]="    /  /  ";
+    char reason[1024]="\0";
     int i=0,price=0,key=0;
     showDate(date);
     while(1){
@@ -17,9 +18,15 @@ void addRecord(void){
             date[i++]=key;
             showDate(date);
         }
+        if(key==8){
+            i--;
+            if(i==4||i==7)i--;
+            date[i]=' ';
+            showDate(date);
+        }
         if(i>9){break;}
         if(key==13){
-            if(date[0]==' '){   //如果使用者沒有輸入日期，則自動填入當日日期
+            if(date[9]==' '){   //如果使用者沒有輸入完整日期，則自動填入當日日期
                 time_t rawtime;
                 struct tm *info;
                 rawtime=time(NULL);
@@ -41,6 +48,6 @@ void addRecord(void){
     while(key==0){  //使用者確認資料，選擇重寫或確認
         key=getch();
         if(key=='n'){addRecord();}
-        else{}
+        else{writeFile(date,reason,&price);}
     }
 }
