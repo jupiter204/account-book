@@ -6,6 +6,9 @@
         "string.h": "c",
         "conio.h": "c",
         "showinfo.h": "c",
-        "dos.h": "c"
+        "dos.h": "c",
+        "malloc.h": "c",
+        "algorithm": "c",
+        "stdlib.h": "c"
     }
 }

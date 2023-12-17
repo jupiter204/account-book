@@ -3,11 +3,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define _file "./account-book.csv"
+
 void checkFile(void){
-    FILE *file=fopen("./accoint-book.csv","r");
+    FILE *file=fopen(_file,"r");
     if(file==NULL){
         fclose(file);
-        FILE *file=fopen("./accoint-book.csv","a");
+        FILE *file=fopen(_file,"a");
         fprintf(file,"\xEF\xBB\xBF");
         fprintf(file,"日期,事由,金額\n");
         fclose(file);
@@ -18,7 +20,7 @@ void writeFile(char *date,char *reason,int *price){
     char buffer[10];
     itoa(*price,buffer,10);
     checkFile();
-    FILE *file=fopen("./accoint-book.csv","a");
+    FILE *file=fopen(_file,"a");
     fprintf(file,date);
     fprintf(file,",");
     fprintf(file,reason);
@@ -26,6 +28,21 @@ void writeFile(char *date,char *reason,int *price){
     fprintf(file,buffer);
     fprintf(file,"\n");
     fclose(file);
+}
+int readFile(char ***result){
+    char *tmp=(char*)malloc(sizeof(char)*100);
+    int row=1;
+    FILE *file=fopen("../account-book.csv","r");
+    while (fscanf(file,"%s",tmp)!=EOF){
+        if(row==1)*result=(char**)malloc(sizeof(char*));
+        else *result=(char**)realloc(*result,row*sizeof(char*));
+        (*result)[row-1]=(char*)malloc(sizeof(char)*strlen(tmp));
+        strcpy((*result)[row-1],tmp);
+        row++;
+    }
+    
+    free(tmp);
+    return row-=2;
 }
 // void main(void){//test
 //     char date[11]="2023/12/10",reason[1024]="這是一行測試字串";
