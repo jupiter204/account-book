@@ -1,5 +1,5 @@
-#ifndef SHOWINFO_H
-#define SHOWINFO_H
+#ifndef _T_SHOWINFO_H
+#define _T_SHOWINFO_H
 void showDate(char *date);
 void showReason(void);
 void showPrice(void);

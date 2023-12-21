@@ -32,7 +32,8 @@ void writeFile(char *date,char *reason,int *price){
 int readFile(char ***result){
     char *tmp=(char*)malloc(sizeof(char)*100);
     int row=1;
-    FILE *file=fopen("../account-book.csv","r");
+    FILE *file=fopen(_file,"r");
+    if(file==NULL){return -1;}
     while (fscanf(file,"%s",tmp)!=EOF){
         if(row==1)*result=(char**)malloc(sizeof(char*));
         else *result=(char**)realloc(*result,row*sizeof(char*));
@@ -42,7 +43,17 @@ int readFile(char ***result){
     }
     
     free(tmp);
+    fclose(file);
     return row-=2;
+}
+void coverFile(char ***result,int max){
+    FILE *file=fopen(_file,"w");
+    fprintf(file,"\xEF\xBB\xBF");
+    for(int i=0;i<max;i++){
+        if((*result)[i]==NULL){continue;}
+        fprintf(file,"%s\n",(*result)[i]);
+    }
+    fclose(file);
 }
 // void main(void){//test
 //     char date[11]="2023/12/10",reason[1024]="這是一行測試字串";

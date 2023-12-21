@@ -8,14 +8,14 @@ void showIndex(char *lock,char **text){
     system("cls");
     printf("歡迎使用本系統\n");
     printf("請使用方向鍵選擇功能，按下迴車建確認選擇\n");
-    for(int i=0;i<sizeof(lock)/2;i++){
+    for(int i=0;i<3;i++){
         printf("(%c) %s\n",lock[i],text[i]);
     }
 }
 int main(int argc,char argv[]){
     system("chcp 65001");   //設定終端機編碼以利各使用者執行
-    char lock[4]={'*',' ',' ',' '};
-    char *text[4]={"新增紀錄","查看及刪除紀錄","結束程式"};
+    char lock[3]={'*',' ',' '};
+    char *text[3]={"新增紀錄","查看及刪除紀錄","結束程式"};
     showIndex(lock,text);
     int ch=0;
     while(1){
@@ -35,14 +35,14 @@ int main(int argc,char argv[]){
                 system("cls");addRecord();
                 break;
             case 1:
-                system("cls");printf("你選擇了功能2，將於1秒鐘後返回");Sleep(1000);
+                system("cls");checkRecord();
                 break;
-            case 3:
+            case 2:
+                system("cls");printf("Bye Bye!!");Sleep(1000);
                 return 0;
             }
             showIndex(lock,text);
         }
     }
-    system("pause");
     return 0;
 }
