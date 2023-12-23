@@ -9,6 +9,8 @@
         "dos.h": "c",
         "malloc.h": "c",
         "algorithm": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "module.h": "c",
+        "filecontrol.h": "c"
     }
 }
